@@ -1,0 +1,31 @@
+import { runtime, devTools } from "@raydiant/sdk";
+
+// Open the console and run devTools.play() to start play the video.
+// Enable looping to simulate a single presentation in the playlist
+// by running devTools.play(true).
+window.devTools = devTools;
+
+// Create the video element and add it to the DOM after setting
+// up event listeners. This ensures the canplay listener is always
+// fired, triggering runtime.ready().
+const video = document.createElement("video");
+
+video.addEventListener("ended", () => {
+  runtime.complete();
+});
+
+video.addEventListener("error", () => {
+  runtime.complete(new Error("Playback error"));
+});
+
+runtime.subscribe("play", () => {
+  video.play();
+});
+
+video.src = "/video.mp4";
+
+// Attach video element to DOM.
+const app = document.querySelector("#app");
+if (!app) throw new Error("Missing app element");
+
+app.appendChild(video);
