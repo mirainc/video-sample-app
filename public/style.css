@@ -1,22 +1,29 @@
 html {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.87);
   background-color: #000000;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
 }
 
 #app {
-  margin: 0 auto;
-  padding: 2rem;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.video-container {
+  flex: 1;
   text-align: center;
+  padding: 3vw;
+}
+
+.video {
+  flex: 1;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  align-self: center;
 }
