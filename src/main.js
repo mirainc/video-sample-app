@@ -9,6 +9,7 @@ window.devTools = devTools;
 // up event listeners. This ensures the canplay listener is always
 // fired, triggering runtime.ready().
 const video = document.createElement("video");
+video.setAttribute('class', 'video')
 
 video.addEventListener("ended", () => {
   runtime.complete();
@@ -25,7 +26,7 @@ runtime.subscribe("play", () => {
 video.src = "/video.mp4";
 
 // Attach video element to DOM.
-const app = document.querySelector("#app");
-if (!app) throw new Error("Missing app element");
+const videoContainer = document.querySelector(".video-container");
+if (!videoContainer) throw new Error("Missing video container element.");
 
-app.appendChild(video);
+videoContainer.appendChild(video);
